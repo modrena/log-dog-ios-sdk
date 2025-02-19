@@ -1,3 +1,4 @@
 copy.sh
 .DS_Store
 .idea
+make-release.sh
