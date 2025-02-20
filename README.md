@@ -1,10 +1,10 @@
-# log-dog-ios-sdk (v1.0.92)
+# log-dog-ios-sdk (v1.1.0)
 
 ## Installation
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/modrena/log-dog-ios-sdk.git", from: "1.0.92")
+    .package(url: "https://github.com/modrena/log-dog-ios-sdk.git", from: "1.1.0")
 ]
 ```
 
