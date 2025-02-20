@@ -11,9 +11,9 @@
         },
         "path" : "/Users/max/Coding/p/LogDog/sdk-ios/LogDog/.build/artifacts/logdog/LogDog/LogDog.xcframework",
         "source" : {
-          "checksum" : "d002036234363cd0260297f767e6f928d10266bae4f71a948d13fc38c959d043",
+          "checksum" : "6f71e79206defc18d122cf613be5344b83db7d46c2ff101945c53af2d6197bea",
           "type" : "remote",
-          "url" : "https://github.com/modrena/log-dog-ios-sdk/releases/download/v1.1.0/LogDog.xcframework.zip"
+          "url" : "https://github.com/modrena/log-dog-ios-sdk/releases/download/v1.1.1/LogDog.xcframework.zip"
         },
         "targetName" : "LogDog"
       }
