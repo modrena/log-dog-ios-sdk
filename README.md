@@ -1,4 +1,4 @@
-# log-dog-ios-sdk (v1.0.6)
+# log-dog-ios-sdk (v1.0.7)
 
 ## Installation
 
