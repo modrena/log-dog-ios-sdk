@@ -5,7 +5,7 @@
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/modrena/log-dog-ios-sdk.git", from: "1.1.8")
+    .package(url: "https://github.com/modrena/log-dog-ios-sdk.git", from: "1.2.4")
 ]
 ```
 
