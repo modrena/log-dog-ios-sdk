@@ -1,6 +1,6 @@
 // swift-tools-version: 5.7
 import PackageDescription
-// Debug valdity of the package with: swift package resolve
+
 let package = Package(
     name: "LogDog",
      platforms: [
@@ -15,8 +15,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "LogDog",
-            url: "https://github.com/modrena/log-dog-ios-sdk/releases/download/v1.1.8/log-dog-ios-sdk.xcframework.zip",
-            checksum: "26a36e99445c712fe06059aa4a73c13098f5596d3e5f10907598c7a261e4f090"
+            url: "https://github.com/modrena/log-dog-ios-sdk/releases/download/vv1.1.9/log-dog-ios-sdk.xcframework.zip",
+            checksum: "9e84e0166ea2260c2d798068e0ecec8b71ef79fc633b9d7c47cbaa0403992b31"
         ),
     ]
 )
