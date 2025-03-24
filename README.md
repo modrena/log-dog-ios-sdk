@@ -28,7 +28,7 @@ For complete documentation, visit the [LogDog Documentation Portal](https://docs
 Add LogDog to your `Podfile`:
 
 ```ruby
-pod 'LogDog', '~> 1.0.0'
+pod 'LogDog', '~> 1.2.8'
 ```
 
 Then run:
@@ -60,14 +60,8 @@ import LogDog
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        LogDog.initialize(
-            apiKey: "YOUR_API_KEY",
-            config: LogDogConfig(
-                interceptNetwork: true,
-                logLevel: .debug
-            )
-        )
-        
+        let config = LogDogConfig(logs: true, network: true, events: true, logLevel: .verbose)
+        LogDog.initialize( apiKey: "YOUR_API_KEY", config: config)
         return true
     }
 }
@@ -90,6 +84,6 @@ LogDog.logEvent("button_click", metadata: ["button_id": "login_button"])
 LogDog.d("Debug message")
 LogDog.i("Info message")
 LogDog.w("Warning message")
-LogDog.e("Error message", error: error)
+LogDog.e("Error message")
 ```
 
