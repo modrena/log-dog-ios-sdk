@@ -1,3 +1,5 @@
+![LogDog Feature Graphic](feature-graphic.png)
+
 # LogDog for iOS
 
 LogDog is a powerful logging and monitoring SDK for iOS applications that helps you track network requests, events, logs, and analytics in real-time.
@@ -41,7 +43,7 @@ Add LogDog as a dependency in your `Package.swift` file:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/modrena/logdog-ios.git", from: "1.0.0")
+    .package(url: "https://github.com/modrena/logdog-ios-sdk.git", from: "1.2.8")
 ]
 ```
 
@@ -58,7 +60,7 @@ import LogDog
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        LogDog.setup(
+        LogDog.initialize(
             apiKey: "YOUR_API_KEY",
             config: LogDogConfig(
                 interceptNetwork: true,
@@ -85,18 +87,9 @@ LogDog.startNetworkMonitoring()
 LogDog.logEvent("button_click", metadata: ["button_id": "login_button"])
 
 // Log with different levels
-LogDog.debug("Debug message")
-LogDog.info("Info message")
-LogDog.warning("Warning message")
-LogDog.error("Error message", error: error)
+LogDog.d("Debug message")
+LogDog.i("Info message")
+LogDog.w("Warning message")
+LogDog.e("Error message", error: error)
 ```
 
-## Advanced Configuration
-
-```swift
-let config = LogDogConfig(
-    logLevel: .debug,
-)
-
-LogDog.setup(apiKey: "YOUR_API_KEY", config: config)
-```
