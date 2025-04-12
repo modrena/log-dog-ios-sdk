@@ -26,7 +26,7 @@ Add LogDog as a dependency in your `Package.swift` file:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/modrena/log-dog-ios-sdk.git", from: "")
+    .package(url: "https://github.com/modrena/log-dog-ios-sdk.git", from: "1.3.5")
 ]
 ```
 
