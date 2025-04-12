@@ -6,7 +6,6 @@ LogDog is a powerful logging and monitoring SDK for iOS applications that helps 
 
 [![CocoaPods](https://img.shields.io/cocoapods/v/LogDog.svg)](https://cocoapods.org/pods/LogDog)
 [![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://swift.org/package-manager/)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
 ## Documentation
 
@@ -59,9 +58,9 @@ import LogDog
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        let config = LogDogConfig(logs: true, network: true, events: true, logLevel: .verbose)
+        let config = LogDogConfig(logs: true, network: true, events: true)
         LogDog.initialize( apiKey: "YOUR_API_KEY", config: config)
+        LogDog.i("Hello from LogDog!")
         return true
     }
 }
