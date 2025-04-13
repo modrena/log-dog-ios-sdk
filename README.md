@@ -1,6 +1,6 @@
 ![LogDog Feature Graphic](feature-graphic.png)
 
-# LogDog for iOS (Version: 1.4.34)
+# LogDog for iOS (Version: 1.4.35)
 
 LogDog is a powerful logging and monitoring SDK for iOS applications that helps you track network requests, events, logs, and analytics in real-time.
 
@@ -24,7 +24,14 @@ For complete documentation, visit the [LogDog Documentation Portal](https://docs
 
 Add it directly in Xcode using `File > Swift Packages > Add Package Dependency`.
 
+To update to a new version open your `PackageDependencies` and specify the desired version
+![LogDog SDK Update](update-version.png)
 
+Then run:
+
+```bash
+xcodebuild -resolvePackageDependencies -disablePackageRepositoryCache
+```
 ## Quick Start
 
 1. Initialize LogDog in your AppDelegate:
