@@ -1,6 +1,6 @@
 ![LogDog Feature Graphic](feature-graphic.png)
 
-# LogDog for iOS
+# LogDog for iOS (Version: 1.0.0)
 
 LogDog is a powerful logging and monitoring SDK for iOS applications that helps you track network requests, events, logs, and analytics in real-time.
 
@@ -22,15 +22,8 @@ For complete documentation, visit the [LogDog Documentation Portal](https://docs
 
 ### Swift Package Manager
 
-Add LogDog as a dependency in your `Package.swift` file:
+Add it directly in Xcode using `File > Swift Packages > Add Package Dependency`.
 
-```swift
-dependencies: [
-    .package(url: "https://github.com/modrena/log-dog-ios-sdk.git", from: "1.3.90")
-]
-```
-
-Or add it directly in Xcode using File > Swift Packages > Add Package Dependency.
 
 ## Quick Start
 
@@ -50,14 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
-2. Add the URLSession swizzling (automatically done if `interceptNetwork = true`):
 
-```swift
-// If you need to manually set up network monitoring:
-LogDog.startNetworkMonitoring()
-```
-
-3. Log events:
+2. Log events:
 
 ```swift
 // Log a simple event
