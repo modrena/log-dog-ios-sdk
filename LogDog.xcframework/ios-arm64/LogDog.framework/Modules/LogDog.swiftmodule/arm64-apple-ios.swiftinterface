@@ -1,0 +1,497 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.0.3 effective-5.10 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
+// swift-module-flags: -target arm64-apple-ios15.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name LogDog
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+import AVFoundation
+import Combine
+import Foundation
+import MediaPlayer
+import Network
+import OSLog
+import SQLite3
+import Swift
+import SwiftUI
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+import os
+extension UIKit.UIColor {
+  convenience public init?(hex: Swift.String)
+}
+extension Foundation.NSNotification.Name {
+  public static let websocketConnectionChange: Foundation.Notification.Name
+  public static let openLogDogSheet: Foundation.Notification.Name
+  public static let apiKeyDeleted: Foundation.Notification.Name
+}
+@available(macOS 10.15, *)
+public let LogDog: LogDog.LogDogInternal
+@_hasMissingDesignatedInitializers @available(macOS 10.15, *)
+public class LogDogInternal : @unchecked Swift.Sendable {
+  public static let shared: LogDog.LogDogInternal
+  public func initialize(apiKey: Swift.String, config: LogDog.LogDogConfig)
+  public func setCustomDeviceName(name: Swift.String)
+  public func isEnabled() -> Swift.Bool
+  public func isConnectedToWs() async -> Swift.Bool
+  public func start(config: LogDog.LogDogConfig)
+  public func logEvent(name: Swift.String, category: Swift.String, payload: [Swift.String : Any])
+  public func getConfig() -> LogDog.LogDogConfig
+  public func stop(config: LogDog.LogDogConfig)
+  public func startAll()
+  public func stopAll()
+  public func l(_ items: Any..., separator: Swift.String = " ", terminator: Swift.String = "\n", file: Swift.String = #filePath, line: Swift.Int = #line)
+  public func i(_ items: Any..., separator: Swift.String = " ", terminator: Swift.String = "\n", file: Swift.String = #filePath, line: Swift.Int = #line)
+  public func w(_ items: Any..., separator: Swift.String = " ", terminator: Swift.String = "\n", file: Swift.String = #filePath, line: Swift.Int = #line)
+  public func e(_ items: Any..., separator: Swift.String = " ", terminator: Swift.String = "\n", file: Swift.String = #filePath, line: Swift.Int = #line)
+  public func n(_ items: Any..., separator: Swift.String = " ", terminator: Swift.String = "\n", file: Swift.String = #filePath, line: Swift.Int = #line)
+  public func f(_ items: Any..., separator: Swift.String = " ", terminator: Swift.String = "\n", file: Swift.String = #filePath, line: Swift.Int = #line)
+  public func setDebugWindowInProductionBuilds(_ val: Swift.Bool)
+  public func useDebugWindowInProductionBuilds() -> Swift.Bool
+  public func getAPIKey() -> Swift.String
+  public func deleteDeviceId()
+  public func getVersion() -> Swift.String
+  public func getSavedAPIKey() -> Swift.String?
+  public func saveAPIKey(apiKey: Swift.String)
+  public func clearAPIKey()
+  public func getCustomDeviceName() -> Swift.String?
+  public func getAPIEndpoint() -> Swift.String
+  public func isTestFlightBuild() -> Swift.Bool
+  public func isStoreBuild() -> Swift.Bool
+  public func isStoreOrTestFlightBuild() -> Swift.Bool
+  @objc deinit
+}
+public struct LogDogConfig {
+  public init(logs: Swift.Bool, network: Swift.Bool, events: Swift.Bool, logLevel: LogDog.LogLevel, environment: Swift.String? = nil)
+}
+extension LogDog.LogDogConfig {
+  public var dictionary: [Swift.String : Any] {
+    get
+  }
+}
+public class LogDogLogger {
+  public init(subsystem: Swift.String, category: Swift.String)
+  public func l(_ items: Any..., level: os.OSLogType = .default, terminator: Swift.String = "\n", file: Swift.String = #filePath, line: Swift.Int = #line)
+  public func i(_ items: Any..., privacy: os.OSLogPrivacy = .public, terminator: Swift.String = "\n", file: Swift.String = #filePath, line: Swift.Int = #line)
+  public func w(_ items: Any..., terminator: Swift.String = "\n", file: Swift.String = #filePath, line: Swift.Int = #line)
+  public func d(_ items: Any..., terminator: Swift.String = "\n", file: Swift.String = #filePath, line: Swift.Int = #line)
+  public func e(_ items: Any..., terminator: Swift.String = "\n", file: Swift.String = #filePath, line: Swift.Int = #line)
+  public func n(_ items: Any..., terminator: Swift.String = "\n", file: Swift.String = #filePath, line: Swift.Int = #line)
+  public func f(_ items: Any..., terminator: Swift.String = "\n", file: Swift.String = #filePath, line: Swift.Int = #line)
+  public func c(_ items: Any..., terminator: Swift.String = "\n", file: Swift.String = #filePath, line: Swift.Int = #line)
+  public func t(_ items: Any..., terminator: Swift.String = "\n", file: Swift.String = #filePath, line: Swift.Int = #line)
+  @objc deinit
+}
+public enum LogLevel : Swift.Hashable {
+  case verbose
+  case debug
+  case info
+  case warning
+  case error
+  public static func == (a: LogDog.LogLevel, b: LogDog.LogLevel) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum RequestType : Swift.Hashable {
+  case network
+  case log
+  case event
+  public static func == (a: LogDog.RequestType, b: LogDog.RequestType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class SDKFeatureState {
+  @objc deinit
+}
+public enum LogDogEnvironment : Swift.Hashable {
+  case dev
+  case prod
+  public static func == (a: LogDog.LogDogEnvironment, b: LogDog.LogDogEnvironment) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum WebsocketConnectionStatus : Swift.Hashable {
+  case connected
+  case disconnected
+  public static func == (a: LogDog.WebsocketConnectionStatus, b: LogDog.WebsocketConnectionStatus) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct RequestTypeLog {
+}
+public struct RequestTypeLogDetails {
+}
+public struct RequestTypeEvent {
+}
+public struct RequestTypeEventDetails {
+}
+public struct RequestTypeRequest {
+}
+public struct RequestTypeRequestDetails {
+}
+public struct RequestTypeRequestDetailsRequest {
+}
+public struct RequestTypeRequestDetailsResponse {
+}
+public struct HighlightColor {
+  public var keyWord: UIKit.UIColor
+  public var key: UIKit.UIColor
+  public var link: UIKit.UIColor
+  public var string: UIKit.UIColor
+  public var number: UIKit.UIColor
+  public var boolean: UIKit.UIColor
+  public var null: UIKit.UIColor
+  public var unknownText: UIKit.UIColor
+  public var unknownBackground: UIKit.UIColor
+  public var searchHitBackground: UIKit.UIColor?
+  public var jsonBackground: UIKit.UIColor
+  public var lineBackground: UIKit.UIColor
+  public var lineText: UIKit.UIColor
+  public init(keyWord: any LogDog.ConvertibleToColor, key: any LogDog.ConvertibleToColor, link: any LogDog.ConvertibleToColor, string: any LogDog.ConvertibleToColor, number: any LogDog.ConvertibleToColor, boolean: any LogDog.ConvertibleToColor, null: any LogDog.ConvertibleToColor, unknownText: any LogDog.ConvertibleToColor, unknownBackground: any LogDog.ConvertibleToColor, searchHitBackground: (any LogDog.ConvertibleToColor)? = nil, jsonBackground: any LogDog.ConvertibleToColor, lineBackground: any LogDog.ConvertibleToColor, lineText: any LogDog.ConvertibleToColor)
+}
+extension LogDog.HighlightColor {
+  public static let `default`: LogDog.HighlightColor
+  public static let mariana: LogDog.HighlightColor
+}
+public protocol ConvertibleToColor {
+  var color: UIKit.UIColor { get }
+}
+extension UIKit.UIColor : LogDog.ConvertibleToColor {
+  public var color: UIKit.UIColor {
+    get
+  }
+}
+extension Swift.Int : LogDog.ConvertibleToColor {
+  public var color: UIKit.UIColor {
+    get
+  }
+}
+extension Swift.String : LogDog.ConvertibleToColor {
+  public var color: UIKit.UIColor {
+    get
+  }
+}
+public typealias AttributedString = Foundation.NSMutableAttributedString
+public typealias AttributedKey = Foundation.NSAttributedString.Key
+public typealias StyleInfos = [LogDog.AttributedKey : Any]
+public struct HighlightStyle {
+  public var expandIcon: UIKit.UIImage
+  public var foldIcon: UIKit.UIImage
+  public var color: LogDog.HighlightColor
+  public var lineFont: UIKit.UIFont
+  public var jsonFont: UIKit.UIFont
+  public var lineHeight: CoreFoundation.CGFloat
+  public var isBoldedSearchResult: Swift.Bool
+  public init(expandIcon: UIKit.UIImage? = nil, foldIcon: UIKit.UIImage? = nil, color: LogDog.HighlightColor = .`default`, lineFont: UIKit.UIFont? = nil, jsonFont: UIKit.UIFont? = nil, lineHeight: CoreFoundation.CGFloat = 24, boldedSearchResult: Swift.Bool = true)
+}
+extension LogDog.HighlightStyle {
+  public static let `default`: LogDog.HighlightStyle
+  public static let mariana: LogDog.HighlightStyle
+}
+public enum JSONError : Swift.Error, Swift.Equatable {
+  case cannotConvertInputDataToUTF8
+  case unexpectedCharacter(jsonValue: LogDog.JSONValue?, ascii: Swift.UInt8, characterIndex: Swift.Int)
+  case unexpectedEndOfFile
+  case tooManyNestedArraysOrDictionaries(characterIndex: Swift.Int)
+  case invalidHexDigitSequence(Swift.String, index: Swift.Int)
+  case unexpectedEscapedCharacter(ascii: Swift.UInt8, in: Swift.String, index: Swift.Int)
+  case unescapedControlCharacterInString(ascii: Swift.UInt8, in: Swift.String, index: Swift.Int)
+  case expectedLowSurrogateUTF8SequenceAfterHighSurrogate(in: Swift.String, index: Swift.Int)
+  case couldNotCreateUnicodeScalarFromUInt32(in: Swift.String, index: Swift.Int, unicodeScalarValue: Swift.UInt32)
+  case numberWithLeadingZero(index: Swift.Int)
+  case numberIsNotRepresentableInSwift(parsed: Swift.String)
+  case singleFragmentFoundButNotAllowed
+  public static func == (a: LogDog.JSONError, b: LogDog.JSONError) -> Swift.Bool
+}
+public struct JSONObjectKey {
+  public static let wrong: LogDog.JSONObjectKey
+  public let key: Swift.String
+  public let isWrong: Swift.Bool
+  public init(_ key: Swift.String)
+}
+extension LogDog.JSONObjectKey : Swift.Hashable {
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: LogDog.JSONObjectKey, b: LogDog.JSONObjectKey) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension LogDog.JSONObjectKey : Swift.Comparable {
+  public static func < (lhs: LogDog.JSONObjectKey, rhs: LogDog.JSONObjectKey) -> Swift.Bool
+}
+extension LogDog.JSONObjectKey : Swift.ExpressibleByStringLiteral {
+  public init(stringLiteral value: Swift.StringLiteralType)
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.StringLiteralType
+  public typealias StringLiteralType = Swift.StringLiteralType
+  public typealias UnicodeScalarLiteralType = Swift.StringLiteralType
+}
+public struct JSONSlice {
+  public enum State : Swift.Hashable {
+    public static let `default`: LogDog.JSONSlice.State
+    case expand, folded
+    public static func == (a: LogDog.JSONSlice.State, b: LogDog.JSONSlice.State) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let lineNumber: Swift.Int
+  public var state: LogDog.JSONSlice.State
+  public let level: Swift.Int
+  public var expand: LogDog.AttributedString
+  public var folded: LogDog.AttributedString?
+}
+extension LogDog.JSONSlice {
+  public var showContent: LogDog.AttributedString? {
+    get
+  }
+}
+public enum JSONValue : Swift.Equatable {
+  case string(Swift.String, wrong: Swift.String? = nil)
+  case number(Swift.String, wrong: Swift.String? = nil)
+  case bool(Swift.Bool, wrong: Swift.String? = nil)
+  case null(wrong: Swift.String? = nil)
+  case array([LogDog.JSONValue])
+  case object([LogDog.JSONObjectKey : LogDog.JSONValue])
+  case unknown(Swift.String)
+  public static func == (a: LogDog.JSONValue, b: LogDog.JSONValue) -> Swift.Bool
+}
+extension LogDog.JSONValue {
+  public enum ValueType {
+    case wrong
+    case right(isContainer: Swift.Bool)
+  }
+  public var isRight: LogDog.JSONValue.ValueType {
+    get
+  }
+  public func appendWrong(_ wrong: Swift.String) -> LogDog.JSONValue
+}
+extension LogDog.JSONValue {
+  public var debugDataTypeDescription: Swift.String {
+    get
+  }
+}
+final public class JSONDecorator {
+  final public let style: LogDog.HighlightStyle
+  final public let initialState: LogDog.JSONSlice.State
+  final public var slices: [LogDog.JSONSlice] {
+    get
+  }
+  public init(style: LogDog.HighlightStyle, initialState: LogDog.JSONSlice.State)
+  @objc deinit
+}
+extension LogDog.JSONDecorator {
+  public static func highlight(_ json: Swift.String, style: LogDog.HighlightStyle = .`default`, initialState: LogDog.JSONSlice.State = .`default`, judgmentValid: Swift.Bool = false) -> LogDog.JSONDecorator?
+  final public func createSlices(from json: Swift.String) -> [LogDog.JSONSlice]
+  final public func assemble() -> (attributedText: LogDog.AttributedString, lines: [Swift.Int])
+}
+public struct JSONParser {
+  public var reader: LogDog.JSONParser.DocumentReader
+  public var depth: Swift.Int
+  public init(bytes: [Swift.UInt8])
+  public mutating func parse() throws -> LogDog.JSONValue
+}
+extension LogDog.JSONParser {
+  public struct DocumentReader {
+    public let array: [Swift.UInt8]
+    public var isEOF: Swift.Bool {
+      get
+    }
+    public init(array: [Swift.UInt8])
+    public subscript(bounds: Swift.Range<Swift.Int>) -> Swift.ArraySlice<Swift.UInt8> {
+      get
+    }
+    public mutating func read() -> Swift.UInt8?
+    public func peek(offset: Swift.Int = 0) -> Swift.UInt8?
+    public mutating func moveReaderIndex(forwardBy offset: Swift.Int)
+    @discardableResult
+    public mutating func consumeWhitespace() throws -> Swift.UInt8
+    public mutating func readString() throws -> Swift.String
+    public mutating func readNumber() throws -> Swift.String
+    public mutating func readBool() throws -> Swift.Bool
+    public mutating func readNull() throws
+    public func readUnknown(start index: Swift.Int) -> Swift.String
+    public enum EscapedSequenceError : Swift.Error {
+      case expectedLowSurrogateUTF8SequenceAfterHighSurrogate(index: Swift.Int)
+      case unexpectedEscapedCharacter(ascii: Swift.UInt8, index: Swift.Int)
+      case couldNotCreateUnicodeScalarFromUInt32(index: Swift.Int, unicodeScalarValue: Swift.UInt32)
+    }
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class JSONPreview : UIKit.UIView {
+  @_Concurrency.MainActor @preconcurrency open var skeletonStackView: UIKit.UIStackView {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency open var lineNumberTableView: LogDog.LineNumberTableView {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency open var jsonScrollView: LogDog.JSONScrollView {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency open var jsonTextView: LogDog.JSONTextView {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency weak public var delegate: (any LogDog.JSONPreviewDelegate)?
+  @_Concurrency.MainActor @preconcurrency public var automaticWrapEnabled: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency public var shouldAnimateScrollToTopOnWrapModeChange: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency public var highlightStyle: LogDog.HighlightStyle {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency public init(automaticWrapEnabled: Swift.Bool)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension LogDog.JSONPreview {
+  @_Concurrency.MainActor @preconcurrency public var contentSize: CoreFoundation.CGSize {
+    get
+  }
+  @_Concurrency.MainActor @preconcurrency public var textLayoutSize: CoreFoundation.CGSize {
+    get
+  }
+  @_Concurrency.MainActor @preconcurrency public var isScrollEnabled: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency public var isHiddenLineNumber: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency public var bounces: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency public var showsHorizontalScrollIndicator: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency public var showsVerticalScrollIndicator: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency public var scrollsToTop: Swift.Bool {
+    get
+    set
+  }
+}
+extension LogDog.JSONPreview {
+  public typealias Completion = (LogDog.JSONDecorator?) -> Swift.Void
+  @_Concurrency.MainActor @preconcurrency public func preview(_ json: Swift.String, initialState: LogDog.JSONSlice.State = .`default`, completion: LogDog.JSONPreview.Completion? = nil)
+  @_Concurrency.MainActor @preconcurrency public func update(with decorator: LogDog.JSONDecorator?, completion: LogDog.JSONPreview.Completion? = nil)
+}
+extension LogDog.JSONPreview {
+  public typealias SearchCompletion = (_ index: [Swift.Int], LogDog.JSONDecorator?) -> Swift.Void
+  @_Concurrency.MainActor @preconcurrency public func search(_ content: Swift.String, completion: LogDog.JSONPreview.SearchCompletion? = nil)
+  @_Concurrency.MainActor @preconcurrency public func removeSearchStyle(completion: LogDog.JSONPreview.Completion? = nil)
+}
+extension LogDog.JSONPreview : UIKit.UITableViewDelegate {
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func tableView(_: UIKit.UITableView, heightForRowAt indexPath: Foundation.IndexPath) -> CoreFoundation.CGFloat
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func tableView(_: UIKit.UITableView, heightForHeaderInSection _: Swift.Int) -> CoreFoundation.CGFloat
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func tableView(_: UIKit.UITableView, heightForFooterInSection _: Swift.Int) -> CoreFoundation.CGFloat
+}
+extension LogDog.JSONPreview : UIKit.UITableViewDataSource {
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func tableView(_: UIKit.UITableView, numberOfRowsInSection _: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
+}
+extension LogDog.JSONPreview : UIKit.UIScrollViewDelegate {
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func scrollViewDidScroll(_ scrollView: UIKit.UIScrollView)
+}
+extension LogDog.JSONPreview : UIKit.UITextViewDelegate {
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func textView(_ textView: UIKit.UITextView, shouldInteractWith url: Foundation.URL, in _: Foundation.NSRange, interaction _: UIKit.UITextItemInteraction) -> Swift.Bool
+}
+extension LogDog.JSONPreview : LogDog.JSONTextViewDelegate {
+  @_Concurrency.MainActor @preconcurrency public func textView(_ textView: LogDog.JSONTextView, didClickZoomAt pointY: CoreFoundation.CGFloat)
+}
+@available(tvOS, unavailable, message: "UITextView cannot be edited on tvOS, so the folding function cannot be implemented.")
+public protocol JSONPreviewDelegate : ObjectiveC.NSObjectProtocol {
+  func jsonPreview(_ view: LogDog.JSONPreview, didClickURL url: Foundation.URL, on textView: UIKit.UITextView) -> Swift.Bool
+  func jsonPreview(_ view: LogDog.JSONPreview, didChangeSliceState slice: LogDog.JSONSlice, decorator: LogDog.JSONDecorator)
+}
+@available(tvOS, unavailable)
+extension LogDog.JSONPreviewDelegate {
+  public func jsonPreview(_: LogDog.JSONPreview, didClickURL _: Foundation.URL, on _: UIKit.UITextView) -> Swift.Bool
+  public func jsonPreview(_: LogDog.JSONPreview, didChangeSliceState _: LogDog.JSONSlice, decorator _: LogDog.JSONDecorator)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class JSONScrollView : UIKit.UIScrollView {
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@available(tvOS, unavailable, message: "UITextView cannot be edited on tvOS, so the folding function cannot be implemented.")
+public protocol JSONTextViewDelegate : ObjectiveC.NSObjectProtocol {
+  func textView(_ textView: LogDog.JSONTextView, didClickZoomAt pointY: CoreFoundation.CGFloat)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class JSONTextView : UIKit.UITextView {
+  @_Concurrency.MainActor @preconcurrency weak open var clickDelegate: (any LogDog.JSONTextViewDelegate)?
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect, textContainer: UIKit.NSTextContainer? = nil)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension LogDog.JSONTextView {
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func layoutSubviews()
+}
+extension LogDog.JSONTextView {
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func touchesBegan(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func canPerformAction(_ action: ObjectiveC.Selector, withSender sender: Any?) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func copy(_ sender: Any?)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class LineNumberCell : UIKit.UITableViewCell {
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func layoutSubviews()
+  @available(iOS 3.0, *)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(style: UIKit.UITableViewCell.CellStyle, reuseIdentifier: Swift.String?)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class LineNumberTableView : UIKit.UITableView {
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect, style: UIKit.UITableView.Style)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@_Concurrency.MainActor @preconcurrency public struct LogDogControlSheet : SwiftUICore.View {
+  @SwiftUICore.Binding @_projectedValueProperty($isPresented) @_Concurrency.MainActor @preconcurrency public var isPresented: Swift.Bool {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    nonmutating set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    nonmutating _modify
+  }
+  @_Concurrency.MainActor @preconcurrency public var $isPresented: SwiftUICore.Binding<Swift.Bool> {
+    get
+  }
+  @_Concurrency.MainActor @preconcurrency public init(isPresented: SwiftUICore.Binding<Swift.Bool>)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6LogDog0aB12ControlSheetV4bodyQrvp", 0) __
+}
+extension SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public func logDogSheet() -> some SwiftUICore.View
+  
+}
+@_Concurrency.MainActor @preconcurrency public struct LogDogSettingsForm : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init()
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6LogDog0aB12SettingsFormV4bodyQrvp", 0) __
+}
+extension LogDog.LogDogControlSheet : Swift.Sendable {}
+extension LogDog.LogDogSettingsForm : Swift.Sendable {}
