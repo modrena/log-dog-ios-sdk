@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name             = 'LogDog'
-    s.version          = '1.4.405'
+    s.version          = '1.4.406'
     s.summary          = 'LogDog iOS SDK'
     s.description      = 'A SDK for logging and debugging network traffic on iOS.'
     s.homepage         = 'https://github.com/modrena/log-dog-ios-sdk'
