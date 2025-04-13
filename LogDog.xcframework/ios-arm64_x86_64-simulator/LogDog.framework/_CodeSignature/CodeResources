@@ -14,7 +14,7 @@
 		</data>
 		<key>Modules/LogDog.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		jCs6xxAKcVi/O9KdOPrxBYIQay8=
+		bJV+OLv84mn0h4mp3vwWVkKXRBc=
 		</data>
 		<key>Modules/LogDog.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -30,11 +30,11 @@
 		</data>
 		<key>Modules/LogDog.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		nd70f7ChLBLUsv4KkZwUgfDGTok=
+		btzkdG35F+ygvC6alPLYO1KALrg=
 		</data>
 		<key>Modules/LogDog.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		jCs6xxAKcVi/O9KdOPrxBYIQay8=
+		bJV+OLv84mn0h4mp3vwWVkKXRBc=
 		</data>
 		<key>Modules/LogDog.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -50,7 +50,7 @@
 		</data>
 		<key>Modules/LogDog.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		KzNIgl753Oiy6Vo2E4q2X2Dlvt4=
+		2MIPDX2DdIFydFrqh2WT0CGE7Zo=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -66,7 +66,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			tu9ww3YwMvrkb+gEuC9RCSOtDI0FUs69md0+eDKxWO4=
+			AgqhkW9z5UVf6svbWRyXIIja1s1ip+ijAr1Xph5cdRc=
 			</data>
 		</dict>
 		<key>Modules/LogDog.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -94,14 +94,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Rvx+tlSInfPDmgRwEbU3Q9bYhxzVa5IHmr5KGZjsK20=
+			k7LJQWNaqUUD+PusBP7oIyF2rojsorWGOyPnbvYFbEI=
 			</data>
 		</dict>
 		<key>Modules/LogDog.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			tu9ww3YwMvrkb+gEuC9RCSOtDI0FUs69md0+eDKxWO4=
+			AgqhkW9z5UVf6svbWRyXIIja1s1ip+ijAr1Xph5cdRc=
 			</data>
 		</dict>
 		<key>Modules/LogDog.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
@@ -129,7 +129,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			UInD/yxFzL8fhPzM3hT2UUtw6yVld8RGnxS3It3jSv0=
+			zRj+YJTtiGJxdQ/y86llhYt5fymTT97JgTAIbnELTHI=
 			</data>
 		</dict>
 	</dict>

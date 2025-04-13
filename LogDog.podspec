@@ -8,8 +8,8 @@ Pod::Spec.new do |s|
     s.author           = { 'Modrena' => 'support@logdog.app' }
 
     # ⬇️ Must point to a zip that contains LogDog.xcframework at top level
-    #s.source           = { :http => 'https://github.com/modrena/log-dog-ios-sdk/releases/download/v1.4.402/log-dog-ios-sdk.xcframework.zip' }
-    s.source       = { :git => 'https://github.com/modrena/log-dog-ios-sdk.git', :tag => s.version.to_s }
+    s.source           = { :http => 'https://github.com/modrena/log-dog-ios-sdk/releases/download/v1.4.404/log-dog-ios-sdk.xcframework.zip' }
+    #s.source       = { :git => 'https://github.com/modrena/log-dog-ios-sdk.git', :tag => s.version.to_s }
 
     # ⬇️ This must match the top-level folder name in the zip!
     s.vendored_frameworks = 'LogDog.xcframework'
