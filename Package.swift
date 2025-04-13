@@ -16,7 +16,7 @@ let package = Package(
         .binaryTarget(
             name: "LogDog",
             url: "https://github.com/modrena/log-dog-ios-sdk/releases/download/v1.4.37/log-dog-ios-sdk.xcframework.zip",
-            checksum: "15d490bdf3fad348660114832cd1ba74183de4ea541a0fdeb83a17895882f25d"
+            checksum: "7714e3c189e02b872450cd7f5fbc5129523f81b0dd25b7c9f35515b2eea1cfdb"
         ),
     ]
 )
