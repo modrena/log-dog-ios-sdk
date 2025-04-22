@@ -1,6 +1,6 @@
 ![LogDog Feature Graphic](feature-graphic.png)
 
-# LogDog for iOS (Version: 1.4.428)
+# LogDog for iOS (Version: 1.4.429)
 
 LogDog is a powerful logging and monitoring SDK for iOS applications that helps you track network requests, events, logs, and analytics in real-time.
 
@@ -27,7 +27,7 @@ For complete documentation, visit the [LogDog Documentation Portal](https://docs
 target 'log-dog-ios-boilerplate' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  pod 'LogDogSDK', '1.4.428'
+  pod 'LogDogSDK', '1.4.429'
 end
 ```
 
@@ -37,6 +37,11 @@ pod install
 
 Note: If problems with cocoa pods occur try:
 pod 'LogDogSDK', :podspec => 'https://raw.githubusercontent.com/modrena/log-dog-ios-sdk/v{VERSION}/LogDogSDK.podspec'
+
+### Troubleshooting with Cocoa Pods
+
+If you receive build errors like "Sandbox: rsync..." try the following:
+Build Settings -> ENABLE_USER_SCRIPT_SANDBOXING -> No
 
 ### Swift Package Manager
 
