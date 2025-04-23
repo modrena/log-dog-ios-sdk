@@ -1,10 +1,8 @@
 ![LogDog Feature Graphic](feature-graphic.png)
 
-# LogDog for iOS (Version: 1.4.438)
+# LogDog for iOS (Version: 1.4.439)
 
 LogDog is a powerful logging and monitoring SDK for iOS applications that helps you track network requests, events, logs, and analytics in real-time.
-
-[![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://swift.org/package-manager/)
 
 ## Documentation
 
@@ -27,7 +25,7 @@ For complete documentation, visit the [LogDog Documentation Portal](https://docs
 target 'log-dog-ios-boilerplate' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  pod 'LogDogSDK', '1.4.438'
+  pod 'LogDogSDK', '1.4.439'
 end
 ```
 
@@ -36,26 +34,19 @@ pod install
 ```
 
 Note: If problems with cocoa pods occur try:
+
+```
 pod 'LogDogSDK', :podspec => 'https://raw.githubusercontent.com/modrena/log-dog-ios-sdk/v{VERSION}/LogDogSDK.podspec'
+```
 
 ### Troubleshooting with Cocoa Pods
 
 If you receive build errors like "Sandbox: rsync..." try the following:
+
+````
 Build Settings -> ENABLE_USER_SCRIPT_SANDBOXING -> No
-
-### Swift Package Manager
-
-Add it directly in Xcode using `File > Swift Packages > Add Package Dependency`.
-
-To update to a new version open your `PackageDependencies` and specify the desired version
-
-![LogDog SDK Update](update-version.png)
-
-Then run:
-
-```bash
-xcodebuild -resolvePackageDependencies -disablePackageRepositoryCache
 ```
+
 ## Quick Start
 
 1. Initialize LogDog in your AppDelegate:
