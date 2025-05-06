@@ -1,6 +1,6 @@
 ![LogDog Feature Graphic](feature-graphic.png)
 
-# LogDog for iOS (Version: 1.4.441)
+# LogDog for iOS (Version: 1.4.442)
 
 LogDog is a powerful logging and monitoring SDK for iOS applications that helps you track network requests, events, logs, and analytics in real-time.
 
@@ -25,7 +25,7 @@ For complete documentation, visit the [LogDog Documentation Portal](https://docs
 target 'log-dog-ios-boilerplate' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  pod 'LogDogSDK', '1.4.441'
+  pod 'LogDogSDK', '1.4.442'
 end
 ```
 
@@ -57,25 +57,11 @@ import LogDog
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let config = LogDogConfig(logs: true, network: true, events: true)
-        LogDog.initialize( apiKey: "YOUR_API_KEY", config: config)
-        LogDog.i("Hello from LogDog!")
+         LogDog.initialize()
+         let config = LogDogConfig(apiKey: "YOUR_API_KEY", logs: true, network: true, events: true)
+         LogDog.start(config: config)
+         LogDog.i("Hello from LogDog!")
         return true
     }
 }
 ```
-
-
-2. Log events:
-
-```swift
-// Log a simple event
-LogDog.logEvent("button_click", metadata: ["button_id": "login_button"])
-
-// Log with different levels
-LogDog.d("Debug message")
-LogDog.i("Info message")
-LogDog.w("Warning message")
-LogDog.e("Error message")
-```
-
