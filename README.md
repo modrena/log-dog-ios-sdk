@@ -1,6 +1,6 @@
 ![LogDog Feature Graphic](feature-graphic.png)
 
-# LogDog for iOS (Version: 1.4.474)
+# LogDog for iOS (Version: 1.4.475)
 
 LogDog is a powerful logging and monitoring SDK for iOS applications that helps you track network requests, events, logs, and analytics in real-time.
 
@@ -25,7 +25,7 @@ For complete documentation, visit the [LogDog Documentation Portal](https://docs
 target 'log-dog-ios-boilerplate' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  pod 'LogDogSDK', '1.4.474'
+  pod 'LogDogSDK', '1.4.475'
 end
 ```
 
@@ -57,13 +57,12 @@ import LogDog
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    override func init {
-            super.init()
-            LogDog.initialize()
-            let config = LogDogConfig(apiKey: "YOUR_API_KEY", logs: true, network: true, events: true)
-            LogDog.start(config: config)
-            LogDog.i("Hello from LogDog!")
-            return true
+    override init() {
+        super.init()
+        LogDog.initialize()
+        let config = LogDogConfig(apiKey: "YOUR_API_KEY", logs: true, network: true, events: true)
+        LogDog.start(config: config)
+        LogDog.i("Hello from LogDog!")
     }
 }
 ```
