@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name             = 'LogDogSDKWithScreenShare'
-    s.version          = '1.4.509' # or your desired version
+    s.version          = '1.4.510' # or your desired version
     s.summary          = 'LogDog iOS SDK - Screen Sharing'
     s.description      = 'A SDK for logging and debugging network traffic on iOS.'
     s.homepage         = 'https://github.com/modrena/log-dog-ios-sdk'
