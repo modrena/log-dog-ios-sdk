@@ -1,6 +1,6 @@
 ![LogDog Feature Graphic](feature-graphic.png)
 
-# LogDog for iOS (Version: 1.4.531)
+# LogDog for iOS (Version: 1.4.532)
 
 LogDog is a powerful logging and monitoring SDK for iOS applications that helps you track network requests, events, logs, and analytics in real-time.
 
@@ -25,7 +25,7 @@ For complete documentation, visit the [LogDog Documentation Portal](https://docs
 target 'your-example-target' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  pod 'LogDogSDK', '1.4.531'
+  pod 'LogDogSDK', '1.4.532'
 end
 ```
 
